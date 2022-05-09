@@ -1,0 +1,27 @@
+.login {
+    width: 500px;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 50px auto;
+    border: 3px solid #eeeeee;
+}
+
+.login__btn {
+    padding: 30px 40px;
+    font-size: 26px;
+    line-height: 1.2;
+    border-radius: 5px;
+    border: 0;
+    color: #ffffff;
+    background: blue;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+    &:focus {
+        outline: none;
+    }
+    &:hover {
+        background: darkblue;
+    }
+}
