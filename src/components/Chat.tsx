@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Login: React.FC = () => {
+const Chat: React.FC = () => {
   return (
     <div>
       Chat
@@ -8,4 +8,4 @@ const Login: React.FC = () => {
   );
 }
 
-export default Login;
+export default Chat;
