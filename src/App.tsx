@@ -16,10 +16,12 @@ const App: React.FC = () => {
     }
 
     return (
-        <BrowserRouter>
-            <Navbar />
-            <AppRouter />
-        </BrowserRouter>
+        <div className="app">
+            <BrowserRouter>
+                <Navbar />
+                <AppRouter />
+            </BrowserRouter>
+        </div>
     );
 }
 

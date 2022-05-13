@@ -3,3 +3,21 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+body {
+}
+
+:root {
+  --primary: #2200ff;
+}
+
+.app {
+  max-width: 800px;
+  height: 1000px;
+  margin: 100px auto 0;
+  background-color: #F9F9FA;
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 10px;
+  filter: drop-shadow(0px 0px 6px #E6E6ED);
+}
