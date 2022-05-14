@@ -5,6 +5,7 @@ import { Context } from '../..';
 import Loader from '../Loader/Loader';
 import firebase from 'firebase';
 import './Chat.scss';
+import Letter from '../Letter/Letter';
 
 const Chat: React.FC = () => {
     const { auth, firestore } = useContext(Context);
@@ -33,11 +34,13 @@ const Chat: React.FC = () => {
         <div className="chat">
             <div className="chat__wall">
                 {messages?.map((message: any) => (
-                    <div className={`chat__letter${user.uid === message.uid ? " chat__letter_our" : ""}`}>
-                        <img src={message.photoURL} alt={message.uid} className="chat__letter-avatar" />
-                        <div>{message.displayName}</div>
-                        <div>{message.text}</div>
-                    </div>
+                    <Letter
+                        userId={user.uid}
+                        messageId={message.uid}
+                        photoURL={message.photoURL}
+                        displayName={message.displayName}
+                        text={message.text}
+                    />
                 ))}
             </div>
             <div className="chat__form">
