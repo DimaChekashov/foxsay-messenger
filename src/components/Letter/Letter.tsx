@@ -1,4 +1,5 @@
 import React from 'react';
+import { getDate } from '../../utils/helpers';
 import './Letter.scss';
 
 interface Props {
@@ -7,15 +8,19 @@ interface Props {
     photoURL: string;
     displayName: string;
     text: string;
+    date: number;
 }
 
-const Letter: React.FC<Props> = ({ userId, messageId, photoURL, displayName, text }) => {
+const Letter: React.FC<Props> = ({ userId, messageId, photoURL, displayName, text, date }) => {
     return (
         <div className={`letter${userId === messageId ? " letter_my" : ""}`}>
-            <img src={photoURL} alt={messageId} className="letter__avatar" />
-            <div className="letter__username">{displayName}</div>
-            <div className="letter__text">{text}</div>
-            <div className="letter__date">00:00 AM</div>
+            <div className="letter__avatar">
+                <img src={photoURL} alt={messageId} />
+            </div>
+            <div>
+                <div className="letter__username">{displayName} <span className="letter__date">{getDate(date)}</span></div>
+                <div className="letter__text">{text}</div>
+            </div>
         </div>
     );
 }
