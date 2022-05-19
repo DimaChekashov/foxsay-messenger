@@ -5,6 +5,11 @@
     flex-direction: column;
     justify-content: flex-end;
     height: calc(100% - 74px);
+    .simplebar-scrollbar {
+        &::before {
+            background-color: var(--text-primary);
+        }
+    }
 }
 
 .chat__wall {

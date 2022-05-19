@@ -1,12 +1,14 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 import { Context } from '../..';
 import Loader from '../Loader/Loader';
 import firebase from 'firebase';
-import './Chat.scss';
 import Letter from '../Letter/Letter';
 import Form from '../Form/Form';
+import SimpleBar from 'simplebar-react';
+import 'simplebar/dist/simplebar.min.css';
+import './Chat.scss';
 
 const Chat: React.FC = () => {
     const { auth, firestore } = useContext(Context);
@@ -15,6 +17,8 @@ const Chat: React.FC = () => {
         firestore.collection('messages').orderBy('createdAt')
     );
 
+    const wall = useRef<any>();
+
     const sendMessage = async (message: string) => {
         firestore.collection('messages').add({
             uid: user.uid,
@@ -22,10 +26,18 @@ const Chat: React.FC = () => {
             photoURL: user.photoURL,
             text: message,
             createdAt: firebase.firestore.FieldValue.serverTimestamp()
-        })
+        });
     }
 
-    console.log(messages);
+    useEffect(() => {
+        if(wall.current) wall.current.scrollTop = wall.current.scrollHeight;
+    }, [loading])
+
+    useEffect(() => {
+        if(wall.current && ((wall.current.scrollTop + 770) > (wall.current.scrollHeight - 300))) {
+            wall.current.scrollTop = wall.current.scrollHeight;
+        }
+    }, [messages]);
 
     if (loading) {
         return <Loader />
@@ -33,7 +45,7 @@ const Chat: React.FC = () => {
 
     return (
         <div className="chat">
-            <div className="chat__wall">
+            <SimpleBar className="chat__wall" scrollableNodeProps={{ ref: wall }}>
                 {messages?.map((message: any, i: number) => (
                     <Letter
                         key={`${i}-${message.uid}`}
@@ -45,7 +57,7 @@ const Chat: React.FC = () => {
                         date={message.createdAt}
                     />
                 ))}
-            </div>
+            </SimpleBar>
             <Form sendMessage={sendMessage} />
         </div>
     );
