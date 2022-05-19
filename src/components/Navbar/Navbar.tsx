@@ -2,8 +2,8 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { ROUTE } from '../../utils/consts';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import './Navbar.scss';
 import { Context } from '../..';
+import './Navbar.scss';
 
 const Navbar: React.FC = () => {
     const { auth } = useContext(Context);

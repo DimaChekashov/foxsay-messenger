@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import Loader from './components/Loader/Loader';
 import AppRouter from './components/AppRouter';
 import Navbar from './components/Navbar/Navbar';
+import { BrowserRouter } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Context } from '.';
 import './App.scss';
-import Loader from './components/Loader/Loader';
 
 const App: React.FC = () => {
     const { auth } = useContext(Context);
