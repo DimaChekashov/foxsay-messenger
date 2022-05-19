@@ -6,7 +6,7 @@ interface Props {
 }
 
 const Form: React.FC<Props> = ({ sendMessage }) => {
-    const [value, setValue] = useState("");
+    const [value, setValue] = useState<string>("");
 
     const onSendMessage = () => {
         if(value.length) {
@@ -20,8 +20,10 @@ const Form: React.FC<Props> = ({ sendMessage }) => {
             <textarea 
                 className="form__input" 
                 placeholder="Write a message..." 
-                value={value} 
-                onChange={(e) => setValue(e.target.value)}
+                value={value}
+                onChange={(e) => {
+                    setValue(e.target.value);
+                }}
                 onKeyDown={(e) => {
                     if(e.key === "Enter") {
                         e.preventDefault();
