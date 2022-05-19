@@ -16,7 +16,6 @@ const Chat: React.FC = () => {
     const [messages, loading] = useCollectionData(
         firestore.collection('messages').orderBy('createdAt')
     );
-
     const wall = useRef<any>();
 
     const sendMessage = async (message: string) => {

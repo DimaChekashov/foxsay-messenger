@@ -7,21 +7,31 @@ interface Props {
 
 const Form: React.FC<Props> = ({ sendMessage }) => {
     const [value, setValue] = useState("");
+
+    const onSendMessage = () => {
+        if(value.length) {
+            sendMessage(value);
+            setValue("");
+        }
+    }
     
     return (
         <div className="form">
             <textarea 
                 className="form__input" 
-                placeholder="Input text..." 
+                placeholder="Write a message..." 
                 value={value} 
                 onChange={(e) => setValue(e.target.value)}
+                onKeyDown={(e) => {
+                    if(e.key === "Enter") {
+                        e.preventDefault();
+                        onSendMessage();
+                    }
+                }}
             />
             <button 
                 className="form__btn"
-                onClick={() => {
-                    sendMessage(value);
-                    setValue("");
-                }} 
+                onClick={onSendMessage}
             >Send</button>
         </div>
     );

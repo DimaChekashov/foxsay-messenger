@@ -1,6 +1,5 @@
 .form {
     display: flex;
-    gap: 20px;
     margin: 20px 0;
     padding: 12px 15px;
     border-radius: 10px;
@@ -10,12 +9,14 @@
 .form__input {
     width: 100%;
     height: 70px;
-    padding: 15px 10px;
+    padding: 15px 15px;
     font-size: 16px;
     line-height: 1.2;
     resize: none;
     border: 0;
     border-radius: 10px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
     background-color: #424242;
     color: var(--text-primary);
     font-family: 'Poppins', sans-serif;
@@ -24,6 +25,25 @@
         outline: none;
         background-color: #515151;
     }
+    &::-webkit-scrollbar {
+        width: 2px
+    }
+
+    &::-webkit-scrollbar-track {
+        background: #ffffff9e
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: #e8e7ec
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background: #555
+    }
+}
+
+.form__input::placeholder {
+    color: var(--text-secondary);
 }
 
 .form__btn {
@@ -32,6 +52,8 @@
     border: 0;
     background-color: rgba(255,255,255, 0.1);
     border-radius: 10px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
     padding: 10px 12px;
     font-size: 21px;
     font-weight: 500;
