@@ -1,0 +1,11 @@
+{
+  "files": {
+    "main.css": "/foxsay-messenger/static/css/main.759571ce.css",
+    "main.js": "/foxsay-messenger/static/js/main.1dd46423.js",
+    "index.html": "/foxsay-messenger/index.html"
+  },
+  "entrypoints": [
+    "static/css/main.759571ce.css",
+    "static/js/main.1dd46423.js"
+  ]
+}
