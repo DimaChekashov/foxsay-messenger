@@ -8,7 +8,10 @@ interface Props {
     photoURL: string;
     displayName: string;
     text: string;
-    date: number;
+    date: {
+        seconds: number;
+        nanoseconds: number;
+    };
 }
 
 const Letter: React.FC<Props> = ({ userId, messageId, photoURL, displayName, text, date }) => {
@@ -18,7 +21,7 @@ const Letter: React.FC<Props> = ({ userId, messageId, photoURL, displayName, tex
                 <img src={photoURL} alt={messageId} />
             </div>
             <div>
-                <div className="letter__username">{displayName} <span className="letter__date">{getDate(date)}</span></div>
+                <div className="letter__username">{displayName} <span className="letter__date">{date && getDate(date.seconds)}</span></div>
                 <div className="letter__text">{text}</div>
             </div>
         </div>

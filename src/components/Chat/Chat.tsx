@@ -34,14 +34,15 @@ const Chat: React.FC = () => {
     return (
         <div className="chat">
             <div className="chat__wall">
-                {messages?.map((message: any) => (
+                {messages?.map((message: any, i: number) => (
                     <Letter
+                        key={`${i}-${message.uid}`}
                         userId={user.uid}
                         messageId={message.uid}
                         photoURL={message.photoURL}
                         displayName={message.displayName}
                         text={message.text}
-                        date={message.createdAt.seconds}
+                        date={message.createdAt}
                     />
                 ))}
             </div>
