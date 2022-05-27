@@ -2,6 +2,10 @@ import React, { useContext, useEffect, useRef } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 import { Context } from '../..';
+import {
+  CSSTransition,
+  TransitionGroup,
+} from 'react-transition-group';
 import Loader from '../Loader/Loader';
 import firebase from 'firebase';
 import Letter from '../Letter/Letter';
@@ -45,17 +49,24 @@ const Chat: React.FC = () => {
     return (
         <div className="chat">
             <SimpleBar className="chat__wall" scrollableNodeProps={{ ref: wall }}>
-                {messages?.map((message: any, i: number) => (
-                    <Letter
-                        key={`${i}-${message.uid}`}
-                        userId={user.uid}
-                        messageId={message.uid}
-                        photoURL={message.photoURL}
-                        displayName={message.displayName}
-                        text={message.text}
-                        date={message.createdAt}
-                    />
-                ))}
+                <TransitionGroup className="chat__list">
+                    {messages?.map((message: any, i: number) => (
+                        <CSSTransition
+                            key={`${i}-${message.uid}`}
+                            timeout={500}
+                            classNames="item"
+                        >
+                            <Letter
+                                userId={user.uid}
+                                messageId={message.uid}
+                                photoURL={message.photoURL}
+                                displayName={message.displayName}
+                                text={message.text}
+                                date={message.createdAt}
+                            />
+                        </CSSTransition>
+                    ))}
+                </TransitionGroup>
             </SimpleBar>
             <Form sendMessage={sendMessage} />
         </div>
