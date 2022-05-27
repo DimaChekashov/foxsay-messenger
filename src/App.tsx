@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import Loader from './components/Loader/Loader';
 import AppRouter from './components/AppRouter';
 import Navbar from './components/Navbar/Navbar';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from "react-router-dom";
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Context } from '.';
 import './App.scss';
@@ -17,10 +17,10 @@ const App: React.FC = () => {
 
     return (
         <div className="app">
-            <BrowserRouter>
+            <HashRouter>
                 <Navbar />
                 <AppRouter />
-            </BrowserRouter>
+            </HashRouter>
         </div>
     );
 }
