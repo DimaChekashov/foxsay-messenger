@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef } from 'react';
+import React, { useCallback, useContext, useEffect, useRef } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 import { Context } from '../..';
@@ -22,7 +22,7 @@ const Chat: React.FC = () => {
     );
     const wall = useRef<any>();
 
-    const sendMessage = async (message: string) => {
+    const sendMessage = useCallback((message: string) => {
         firestore.collection('messages').add({
             uid: user.uid,
             displayName: user.displayName,
@@ -30,7 +30,7 @@ const Chat: React.FC = () => {
             text: message,
             createdAt: firebase.firestore.FieldValue.serverTimestamp()
         });
-    }
+    }, [firestore, user])
 
     useEffect(() => {
         if(wall.current) wall.current.scrollTop = wall.current.scrollHeight;
