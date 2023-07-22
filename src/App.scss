@@ -12,7 +12,7 @@ html {
 
 body {
   font-family: 'Poppins', sans-serif;
-  background-color: #141414;
+  background-color: #222222;
 }
 
 :root {
@@ -21,22 +21,9 @@ body {
   --text-secondary: #828282;
 }
 
-#root {
-  min-height: 100vh;
-  width: 100vw;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .app {
-  max-width: 800px;
-  width: 100%;
-  height: 1000px;
-  background-color: #222222;
-  border: 1px solid var(--primary);
-  border-radius: 10px;
-  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
   padding: 10px;
   position: relative;
 }
@@ -52,8 +39,5 @@ body {
 }
 
 @media screen and (max-height: 1000px) and (min-width: 801px) {
-  .app {
-    height: 800px;
-    max-width: 700px;
-  }
+  
 }
